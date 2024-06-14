@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Page</title>
+<link rel="stylesheet" href="daftar1.css">
+<script>
+function registerUser() {
+    var form = document.getElementById("registerForm");
+    var errorDiv = document.getElementById("error_message");
+    
+    var passwordInput = document.getElementById("password");
+    var confirmPasswordInput = document.getElementById("confirm_password");
+    
+    // Check if passwords match
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        errorDiv.innerHTML = "Passwords do not match!";
+        return; // Prevent form submission if passwords don't match
+    }
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "daftar1.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (xhr.responseText.trim() == "Registrasi berhasil!") {
+                // Redirect to login page if registration is successful
+                window.location.href = "../login/login1.html";
+            } else {
+                // Display error message if registration fails
+                errorDiv.innerHTML = xhr.responseText;
+            }
+        }
+    };
+    xhr.send(new URLSearchParams(new FormData(form)).toString());
+}
+</script>
+</head>
+<body>
+    <div class="container">
+        <div class="register-form">
+            <form id="registerForm" onsubmit="event.preventDefault(); registerUser();">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div id="error_message" class="error"></div>
+            <p>Sudah punya akun? <a href="../login/login1.html">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>

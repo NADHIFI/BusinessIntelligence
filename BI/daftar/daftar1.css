@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/BG.png'); /* Ganti dengan jalur yang benar ke gambar latar belakang */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 300px;
+    padding: 100px;
+    margin-left: 74%;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    top: 7%;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-group {
+    text-align: left;
+}
+
+.title-daftar {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 10%; /* Mengatur posisi judul "Daftar" di bagian atas halaman */
+    right: 9.5%;
+    transform: translateX(-50%); /* Menggeser judul ke kiri sejauh setengah lebar judul */
+}
+
+label {
+    color: white;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input {
+    padding: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+error_message {
+    color: red; /* Warna teks merah untuk pesan kesalahan */
+    font-size: 14px; /* Ukuran font 14 piksel */
+    margin-top: 10px; /* Jarak atas dari elemen sebelumnya */
+}
+
+
+button {
+    padding: 7px 50px;
+    background-color: #ffffff;
+    font-style: inherit;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-top: 40px;
+    align-self: center;
+    font-weight: bold;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1); /* Menambahkan shadow dengan nilai horizontal, vertical, blur, dan opacity */
+}

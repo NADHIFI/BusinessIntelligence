@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/BG.png'); /* Ganti dengan jalur yang benar ke gambar latar belakang */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.back-button {
+    position: fixed;
+    top: 20px; /* Ubah nilai ini sesuai dengan jarak vertikal dari atas */
+    left: 20px; /* Ubah nilai ini sesuai dengan jarak horizontal dari kiri */
+    z-index: 9999; /* Pastikan tombol berada di atas elemen lain */
+}
+.container {
+    grid-template-columns: 9fr;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: grid;
+    width: 300px;
+    padding: 100px;
+    margin-left: 73%;
+    border-radius: 50%;
+    position: fixed;
+    top: 7%;
+}
+.textbox input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.passwordField{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+#verificationStatus.success, #verificationStatus.error {
+    text-align: center;
+    padding: 10px;
+    margin-left: 13%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    transition: opacity 0.3s ease-in-out; /* Efek transisi */
+}
+
+#verificationStatus.success {
+    color: rgb(2, 0, 128);
+    background-color: #c9f7c5; /* Warna latar belakang untuk status sukses */
+}
+
+#verificationStatus.error {
+    color: red;
+    background-color: #ffb9b9; /* Warna latar belakang untuk status error */
+}
+
+button{
+    padding: 7px 50px;
+    background-color: #808080;
+    font-style: inherit;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    margin-left: 81px;
+    align-self: center;
+    font-weight: bold;
+    box-shadow: 0 10px 100px rgba(175, 32, 32, 0.1);
+}
+input[type="email"] {
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type="submit"] {
+    margin-left: 29%;
+    background-color: #737373;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #000000;
+}

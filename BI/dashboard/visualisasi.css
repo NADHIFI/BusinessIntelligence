@@ -1,0 +1,173 @@
+body {
+    background-image: url(../img/BGG.png);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .topbar {
+    background-color: #2B2B2B;
+    height: 30px;
+  }
+  
+  .topbar nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .topbar nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .topbar nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  /* Styling for toolbox */
+  .toolbox {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow */
+    
+  }
+  
+  .toolbox a {
+    margin-right: 35px;
+  }
+  
+  .toolbox img.tool-icon {
+    width: 20px; /* Adjust the size as needed */
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .toolbox img.tool-icon:hover {
+    opacity: 0.7; /* Optional: Add hover effect */
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .page-switcher {
+    position: fixed;
+    top: 30px;
+    right: 0;
+    background-color: #2B2B2B;
+    border-right: 2px solid #2B2B2B;
+    height: calc(100vh - 30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-switcher img.page-btn {
+    width: 20px; /* Adjust width as needed */
+    height: auto;
+    margin: 5px; /* Adjust spacing as needed */
+    transition: width 0.3s ease, height 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .page-switcher img.page-btn.active {
+    width: 50px;
+    height: auto;
+    border: 2px solid rgb(253, 253, 253); /* Style for active page button */
+    border-radius: 5px;
+  }
+  
+  .page-btn {
+    display: block;
+    background-color: #FD8D14;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: transform 0.3s, font-size 0.3s;
+  }
+  
+  .page-btn.active {
+    font-size: 20px;
+    margin-left: -1px;
+    position: relative;
+    z-index: 1;
+    border-right: none;
+  }
+  
+  .bell-icon{
+    margin-top: 300px;
+    text-align: center;
+  }
+  .profile-icon {
+    margin-top: 50px;
+  }
+  
+  .bell-icon img{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+  .profile-icon img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .box1 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 3%;
+    margin-left: 3%;
+    padding: 20px;
+    width: 82%; /* Menetapkan lebar 50% dari parent (content) */
+    height: 550px; /* Menetapkan tinggi kotak */
+  }
+  
+  
+  .box-center {
+    background-color: #2A2A2A;
+    margin-bottom: 0px; /* Menggunakan 'auto' untuk menggeser ke kanan dan kiri */
+    padding: 20px;
+    height: 70px;
+    margin-left: 24.7%;
+    border-radius: 20px;
+    width: 37.7%;
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .inner-box {
+    background-color: #C5C5C5; /* Warna kotak dalam */
+    width: 150px; /* Lebar kotak dalam */
+    height: 65px; /* Tinggi kotak dalam */
+    border-radius: 10px; /* Radius sudut kotak dalam */
+    display: flex;
+    cursor: pointer;
+    justify-content: center; /* Menggeser tombol ke tengah horizontal */
+    align-items: center; /* Menggeser tombol ke tengah vertikal */
+  }
+  
+  .add-button {
+    background-color: #7c7c7c; /* Warna tombol */
+    color: #000000; /* Warna simbol */
+    border: none;
+    border-radius: 100%; /* Membuat tombol menjadi lingkaran */
+    width: 50px; /* Ukuran tombol */
+    height: 50px; /* Ukuran tombol */
+    font-size: 24px;
+    cursor: pointer;
+    outline: none; /* Menghilangkan border saat tombol ditekan */
+  }

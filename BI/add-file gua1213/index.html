@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div class="input-bx">
+                <h2 class="upload-area-title">Upload File</h2>
+                <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="upload" accept=".csv,.xls" hidden>
+                    <label for="upload" class="uploadlabel">
+                        <span><i class="fa fa-cloud-upload"></i></span>
+                        <p>Click To Upload</p> 
+                    </label>
+                    <div class="submit-wrapper">
+                        <button type="submit" name="submit">
+                            <img src="../img/tombol.png" alt="Submit" class="submit-image">
+                        </button>
+                    </div>
+                </form>
+                <div id="loading" class="loading">Loading...</div>
+                <div id="complete" class="complete">Complete</div>
+            </div>                   
+        </div>
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+
+            // Show the loading message
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('complete').style.display = 'none';
+
+            var formData = new FormData(this);
+
+            // Create a new AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'upload.php', true);
+
+            xhr.onload = function () {
+                // Hide the loading message
+                document.getElementById('loading').style.display = 'none';
+                
+                if (xhr.status === 200) {
+                    // Show the complete message
+                    document.getElementById('complete').style.display = 'block';
+
+                    // Redirect to view data page after 3 seconds
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost/BI/ViewData/Tampilan.php';
+                    }, 3000);
+                } else {
+                    alert('An error occurred!');
+                }
+            };
+
+            xhr.send(formData); // Send the form data
+        });
+    </script>
+</body>
+</html>

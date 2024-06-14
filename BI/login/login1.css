@@ -1,0 +1,101 @@
+body {
+    background-image: url('../img/BG.png'); /* Ubah path sesuai dengan jalur yang benar ke gambar latar belakang */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.container {
+    grid-template-columns: 9fr;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: grid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-box {
+	position: absolute;
+	right: 6%;
+    width: 300px;
+    padding: 40px;
+    background: transparent;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.login-box img {
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-bottom: 2px;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.textbox {
+    margin-bottom: 20px;
+}
+
+.textbox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 90%;
+    padding: 7px 50px;
+    font-style: inherit;
+    margin-left: 28px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #a8a8a8;
+}
+
+.google-btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px;
+    border-radius: 50px;
+    font-size: 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .g_id_signin {
+    display: inline-block; /* Ensure the Google button is inline */
+    align-items: center;
+}
+  
+  .google-btn:hover {
+    background-color: #ffffff;
+  }
+  
+  .google-logo {
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  
+
+a {
+    text-decoration: none;
+    color: blue;
+}

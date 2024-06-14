@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data CSV</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<button onclick="history.go(-1);">Back</button>
+
+<div class="container">
+    <h2>Data dari CSV</h2>
+
+    <form method="POST" action="tampilan.php">
+        <label for="table">Pilih Tabel:</label>
+        <select name="table" onchange="this.form.submit()">
+            <?php
+            $tables = getTables($conn);
+            foreach ($tables as $table) {
+                $selected = ($selected_table == $table) ? 'selected' : '';
+                echo "<option value='$table' $selected>$table</option>";
+            }
+            ?>
+        </select>
+    </form>
+
+    <form method="POST" action="tampilan.php">
+        <?php
+        if ($selected_table) {
+            echo "<input type='hidden' name='table' value='$selected_table'>";
+            $columns = getColumns($conn, $selected_table);
+            echo "<div>";
+            foreach ($columns as $column) {
+                $checked = (isset($_SESSION['selected_columns']) && in_array($column, $_SESSION['selected_columns'])) ? 'checked' : '';
+                echo "<label><input type='checkbox' name='selected_columns[]' value='$column' $checked>$column</label>";
+            }
+            echo "</div>";
+        }
+        ?>
+        <button type="submit" name="filter">Filter</button>
+        <button type="submit" name="visualize" formaction="../visualisasi/visualisasi.php">Visualisasi</button>
+    </form>
+
+    <div class="table-container">
+        <?php
+        if (!$selected_table) {
+            echo "<p>Pilih tabel untuk melanjutkan.</p>";
+        } elseif (!isset($_SESSION['selected_columns']) || empty($_SESSION['selected_columns'])) {
+            echo "<p>Pilih setidaknya satu kolom untuk ditampilkan.</p>";
+        } else {
+            ?>
+            <table>
+                <thead>
+                    <tr>
+                        <?php
+                        foreach ($_SESSION['selected_columns'] as $column) {
+                            echo "<th>$column</th>";
+                        }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $limit = 50;
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $start = ($page - 1) * $limit;
+                    $result = getData($conn, $selected_table, $_SESSION['selected_columns'], $start, $limit);
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        foreach ($_SESSION['selected_columns'] as $column) {
+                            echo "<td>" . $row[$column] . "</td>";
+                        }
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <?php
+            $total_pages = getTotalPages($conn, $selected_table, $limit);
+            ?>
+            <div class='pagination'>
+                <?php
+                if ($page > 1) {
+                    echo "<a href='?page=" . ($page - 1) . "'>Previous</a>";
+                }
+                $start_page = max(1, $page - 2);
+                $end_page = min($total_pages, $start_page + 3);
+                if ($start_page > 1) {
+                    echo "<a href='?page=1'>1</a>";
+                    if ($start_page > 2) {
+                        echo "...";
+                    }
+                }
+                for ($i = $start_page; $i <= $end_page; $i++) {
+                    if ($i == $page) {
+                        echo "<a class='active' href='?page=$i'>$i</a>";
+                    } else {
+                        echo "<a href='?page=$i'>$i</a>";
+                    }
+                }
+                if ($end_page < $total_pages) {
+                    if ($end_page < $total_pages - 1) {
+                        echo "...";
+                    }
+                    echo "<a href='?page=$total_pages'>$total_pages</a>";
+                }
+                if ($page < $total_pages) {
+                    echo "<a href='?page=" . ($page + 1) . "'>Next</a>";
+                }
+                ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
+</body>
+</html>

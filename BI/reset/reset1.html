@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Password</title>
+    <link rel="stylesheet" href="reset1.css">
+    <script src="https://kit.fontawesome.com/5fb5881ab6.js" crossorigin="anonymous"></script>
+ <body>
+        <a href="../login/login1.html" class="back-button"><i class="fa-solid fa-arrow-left"></i></a>
+    </body>
+<body>
+    <div class="container">
+        <h2>Lupa Password</h2>
+        <p>Masukkan username, dan email Anda untuk mereset password.</p>
+        <form action="reset1.php" method="post" id="resetForm">
+            <div class="textbox">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="button">
+                <button type="button" onclick="verifyEmail()">Verifikasi</button>
+            </div>
+            <div class="textbox" id="passwordField" style="display: none;">
+                <input type="password" name="new_password" placeholder="Password Baru" required>
+            </div>
+            <input type="submit" value="Reset Password" id="submitButton" style="display: none;">
+            <p id="verificationStatus"></p>
+        </form>
+    </div>
+    <script>
+        function verifyEmail() {
+            var email = document.getElementById("email").value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    if (response.exists) {
+                    document.getElementById("passwordField").style.display = "block";
+                    document.getElementById("submitButton").style.display = "block";
+                    document.getElementById("verificationStatus").innerText = "Email tersedia di database.";
+                    document.getElementById("verificationStatus").classList.add("success");
+                } else {
+                    document.getElementById("passwordField").style.display = "none";
+                    document.getElementById("submitButton").style.display = "none";
+                    document.getElementById("verificationStatus").innerText = "Email tidak ditemukan dalam database.";
+                    document.getElementById("verificationStatus").classList.add("error");
+}
+
+                }
+            };
+            xhttp.open("GET", "verify_email.php?email=" + email, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
